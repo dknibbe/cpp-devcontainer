@@ -1,6 +1,6 @@
-project(HelloWorld)
-cmake_minimum_required(VERSION 3.12)
-
+cmake_minimum_required(VERSION 3.18)
+project(HelloWorld VERSION "0.1")
+set(CMAKE_CXX_STANDARD 20)
 Include(FetchContent)
 
 FetchContent_Declare(
@@ -17,6 +17,5 @@ add_subdirectory(temperature)
 
 add_executable(HelloWorld)
 target_sources(HelloWorld PRIVATE main.cpp)
-set_property(TARGET HelloWorld PROPERTY CXX_STANDARD 20)
 
 install(TARGETS HelloWorld)
