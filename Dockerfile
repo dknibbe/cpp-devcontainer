@@ -12,15 +12,13 @@ RUN apt-get install -y cmake ninja-build
 ENV CC=clang
 ENV CXX=clang++
 RUN mkdir -p /build
-ENV BUILD_DIR=/build
 
 FROM base AS builder
 RUN mkdir -p /workdir
+RUN mkdir -p /install
 WORKDIR /workdir
 COPY . .
-
 WORKDIR /build
-RUN mkdir -p /install
 RUN cmake /workdir -G Ninja -DCMAKE_INSTALL_PREFIX=/install
 RUN cmake --build .
 RUN ninja install
