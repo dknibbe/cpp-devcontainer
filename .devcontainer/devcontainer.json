@@ -1,0 +1,46 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/cpp
+{
+  "name": "C++",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "target": "base"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "twxs.cmake",
+        "ms-vscode.cmake-tools",
+        "josetr.cmake-language-support-vscode",
+        "cheshirekow.cmake-format",
+        "ms-vscode.cpptools",
+        "hbenl.vscode-test-explorer",
+        "fredericbonnet.cmake-test-adapter",
+        "xaver.clang-format"
+      ],
+      "settings": {
+        "cmake.debugConfig": {
+          "MIMode": "gdb",
+          "miDebuggerPath": "gdb"
+        },
+        "cmake.buildDirectory": "/build",
+        "editor.formatOnSave": true,
+        "C_Cpp.clang_format_fallbackStyle": "Chromium",
+        "editor.tabSize": 2,
+        "editor.useTabStops": false
+      }
+    }
+  }
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "gcc -v",
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
