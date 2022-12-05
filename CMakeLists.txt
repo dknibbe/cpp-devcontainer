@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 project(HelloWorld VERSION "0.1")
 set(CMAKE_CXX_STANDARD 20)
-Include(FetchContent)
+include(FetchContent)
 
 FetchContent_Declare(
   Catch2
