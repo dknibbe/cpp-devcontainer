@@ -16,7 +16,8 @@
         "ms-vscode.cpptools",
         "hbenl.vscode-test-explorer",
         "fredericbonnet.cmake-test-adapter",
-        "xaver.clang-format"
+        "xaver.clang-format",
+        "eamodio.gitlens"
       ],
       "settings": {
         "cmake.debugConfig": {
