@@ -1,13 +1,18 @@
 FROM debian:stable-slim AS base
 LABEL maintainer="Daniel Knibbe"
 
-RUN apt-get update
-RUN apt-get -y upgrade
-RUN apt-get install -y curl git
-RUN apt-get install -y clang-13 clang-format-13 gdb
-RUN ln -s /usr/bin/clang-13 /usr/bin/clang
-RUN ln -s /usr/bin/clang++-13 /usr/bin/clang++
-RUN ln -s /usr/bin/clang-format-13 /usr/bin/clang-format
+RUN apt-get update &&\
+    apt-get -y upgrade &&\
+    apt update &&\
+    apt upgrade -y
+# RUN apt-get -y upgrade
+RUN apt-get install -y curl wget git
+RUN apt-get install -y gdb
+RUN apt install -y lsb-release wget software-properties-common gnupg
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" "15" "all"
+RUN ln -s /usr/bin/clang-15 /usr/bin/clang
+RUN ln -s /usr/bin/clang++-15 /usr/bin/clang++
+RUN ln -s /usr/bin/clang-format-15 /usr/bin/clang-format
 RUN apt-get install -y cmake ninja-build
 ENV CC=clang
 ENV CXX=clang++
