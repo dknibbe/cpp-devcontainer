@@ -30,6 +30,7 @@ COPY . .
 WORKDIR /build
 RUN cmake /workdir -G Ninja
 RUN cmake --build .
+RUN ctest .
 RUN ninja install
 
 FROM debian:bookworm-slim AS production
