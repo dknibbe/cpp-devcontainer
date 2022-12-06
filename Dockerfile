@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS base
+FROM debian:bookworm-slim AS base
 LABEL maintainer="Daniel Knibbe"
 
 # Update packages
@@ -32,6 +32,6 @@ RUN cmake /workdir -G Ninja
 RUN cmake --build .
 RUN ninja install
 
-FROM debian:stable-slim AS production
+FROM debian:bookworm-slim AS production
 COPY --from=builder /usr/local /usr
 
