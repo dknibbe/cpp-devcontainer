@@ -16,11 +16,19 @@ ENV CXX=clang++
 
 # Dev tools
 RUN apt install -y curl \
-                   git \
-                   cmake \
-                   ninja-build \
-                   gdb
+    git \
+    cmake \
+    ninja-build \
+    gdb
 
+# vcpkg
+RUN apt install -y curl zip unzip tar
+RUN git clone https://github.com/Microsoft/vcpkg.git /vcpkg
+RUN /vcpkg/bootstrap-vcpkg.sh
+RUN cmake --install /vcpkg/buildtrees/_vcpkg/build --prefix /usr
+ENV VCPKG_FORCE_SYSTEM_BINARIES=1
+
+# create build directory
 RUN mkdir -p /build
 
 FROM base AS builder
