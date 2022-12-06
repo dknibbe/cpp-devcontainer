@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 add_library(TemperatureConverter SHARED TemperatureConverter.cpp)
 target_include_directories(TemperatureConverter PUBLIC ${CMAKE_CURRENT_LIST_DIR})
 
-add_executable(TemperatureConverterTests TemperatureConverterTest.cpp)
+add_executable(TemperatureConverterTests TemperatureConverterTests.cpp)
 target_link_libraries(TemperatureConverterTests PRIVATE Catch2::Catch2WithMain TemperatureConverter)
 catch_discover_tests(TemperatureConverterTests)
 
