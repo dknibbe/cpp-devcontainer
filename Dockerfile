@@ -23,9 +23,10 @@ RUN apt install -y curl \
 
 # vcpkg
 RUN apt install -y curl zip unzip tar
-RUN git clone https://github.com/Microsoft/vcpkg.git /vcpkg
-RUN /vcpkg/bootstrap-vcpkg.sh
-RUN cmake --install /vcpkg/buildtrees/_vcpkg/build --prefix /usr
+ENV VCPKG_ROOT=/vcpkg
+RUN git clone https://github.com/Microsoft/vcpkg.git ${VCPKG_ROOT}
+RUN ${VCPKG_ROOT}/bootstrap-vcpkg.sh
+RUN cmake --install ${VCPKG_ROOT}/buildtrees/_vcpkg/build --prefix /usr
 ENV VCPKG_FORCE_SYSTEM_BINARIES=1
 
 # create build directory
