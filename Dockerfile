@@ -6,11 +6,13 @@ RUN apt update && \
     apt upgrade -y
 
 # LLVM
+ENV LLVM_VERSION=15
 RUN apt install -y wget lsb-release wget software-properties-common gnupg
-RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" "15" "all"
-RUN ln -s /usr/bin/clang-15 /usr/bin/clang
-RUN ln -s /usr/bin/clang++-15 /usr/bin/clang++
-RUN ln -s /usr/bin/clang-format-15 /usr/bin/clang-format
+RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" "${LLVM_VERSION}" "all"
+RUN ln -s /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang
+RUN ln -s /usr/bin/clang-tidy-${LLVM_VERSION} /usr/bin/clang-tidy
+RUN ln -s /usr/bin/clang++-${LLVM_VERSION} /usr/bin/clang++
+RUN ln -s /usr/bin/clang-format-${LLVM_VERSION} /usr/bin/clang-format
 ENV CC=clang
 ENV CXX=clang++
 
