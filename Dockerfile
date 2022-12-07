@@ -2,12 +2,12 @@ FROM debian:bookworm-slim AS base
 LABEL maintainer="Daniel Knibbe"
 
 # Update packages
-RUN apt update && \
-    apt upgrade -y
+RUN apt-get update && \
+    apt-get upgrade -y
 
 # LLVM
 ENV LLVM_VERSION=15
-RUN apt install -y wget lsb-release wget software-properties-common gnupg
+RUN apt-get install -y wget lsb-release wget software-properties-common gnupg
 RUN bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)" "${LLVM_VERSION}" "all"
 RUN ln -s /usr/bin/clang-${LLVM_VERSION} /usr/bin/clang
 RUN ln -s /usr/bin/clang-tidy-${LLVM_VERSION} /usr/bin/clang-tidy
@@ -17,14 +17,14 @@ ENV CC=clang
 ENV CXX=clang++
 
 # Dev tools
-RUN apt install -y curl \
+RUN apt-get install -y curl \
     git \
     cmake \
     ninja-build \
     gdb
 
 # vcpkg
-RUN apt install -y curl zip unzip tar pkg-config
+RUN apt-get install -y curl zip unzip tar pkg-config
 ENV VCPKG_ROOT=/vcpkg
 RUN git clone https://github.com/Microsoft/vcpkg.git ${VCPKG_ROOT}
 RUN ${VCPKG_ROOT}/bootstrap-vcpkg.sh
