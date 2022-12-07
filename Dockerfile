@@ -15,6 +15,8 @@ RUN ln -s /usr/bin/clang++-${LLVM_VERSION} /usr/bin/clang++
 RUN ln -s /usr/bin/clang-format-${LLVM_VERSION} /usr/bin/clang-format
 ENV CC=clang
 ENV CXX=clang++
+RUN clang --version
+RUN clang++ --version
 
 # Dev tools
 RUN apt-get install -y curl \
