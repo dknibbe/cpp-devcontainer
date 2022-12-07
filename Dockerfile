@@ -24,7 +24,7 @@ RUN apt install -y curl \
     gdb
 
 # vcpkg
-RUN apt install -y curl zip unzip tar
+RUN apt install -y curl zip unzip tar pkg-config
 ENV VCPKG_ROOT=/vcpkg
 RUN git clone https://github.com/Microsoft/vcpkg.git ${VCPKG_ROOT}
 RUN ${VCPKG_ROOT}/bootstrap-vcpkg.sh
