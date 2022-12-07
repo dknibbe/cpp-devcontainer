@@ -26,7 +26,7 @@
         },
         "cmake.buildDirectory": "/build",
         "editor.formatOnSave": true,
-        "C_Cpp.clang_format_fallbackStyle": "Chromium",
+        "clang-format.style": "Chromium",
         "[cpp]": {
           "editor.tabSize": 2,
           "editor.useTabStops": false
